@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaBriefcase, FaCompass, FaUser, FaUserFriends, FaUsers } from 'react-icons/fa'
+import Tooltip from './Tooltip'
 
 export default function ProfileList({ profile }) {
 	return (
@@ -12,14 +13,18 @@ export default function ProfileList({ profile }) {
 				</li>
 				{profile.location && (
 					<li>
-						<FaCompass color='rgb(144, 115, 255)' size={22} />
-						{profile.location}
+						<Tooltip text="User's location">
+							<FaCompass color='rgb(144, 115, 255)' size={22} />
+							{profile.location}
+						</Tooltip>
 					</li>
 				)}
 				{profile.company && (
 					<li>
-						<FaBriefcase color='#795548' size={22} />
-						{profile.company}
+						<Tooltip text="User's company">
+							<FaBriefcase color='#795548' size={22} />
+							{profile.company}
+						</Tooltip>
 					</li>
 				)}
 				<li>
