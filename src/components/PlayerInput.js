@@ -22,7 +22,7 @@ export default class PlayerInput extends Component {
 	render() {
 		return (
 			<ThemeConsumer>
-				{({ theme }) => (
+				{(theme) => (
 					<form className='column player' onSubmit={this.handleSubmit}>
 						<label htmlFor="username" className="player-label">
 							{this.props.label}

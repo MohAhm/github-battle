@@ -6,7 +6,7 @@ import { ThemeConsumer } from '../contexts/theme'
 export default function PlayerPreview({ username, onReset, label }) {
 	return (
 		<ThemeConsumer>
-			{({ theme }) => (
+			{(theme) => (
 				<div className='column player'>
 					<h3 className='player-label'>{label}</h3>
 					<div className={`row bg-${theme}`}>

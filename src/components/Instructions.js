@@ -5,7 +5,7 @@ import { ThemeConsumer } from '../contexts/theme'
 export default function Instructions() {
 	return (
 		<ThemeConsumer>
-			{({ theme }) => (
+			{(theme) => (
 				<div className='instructions-container'>
 					<h1 className='center-text header-lg'>
 						Instructions
