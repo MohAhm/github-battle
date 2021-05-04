@@ -1,75 +1,65 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Instructions from './Instructions'
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview'
 import { Link } from 'react-router-dom'
 
-export default class Battle extends Component {
-	state = {
-		playerOne: null,
-		playerTwo: null,
-	}
+export default function Battle() {
+	const [playerOne, setPlayerOne] = useState(null)
+	const [playerTwo, setPlayerTwo] = useState(null)
 
-	handleSubmit = (id, player) => {
-		this.setState({
-			[id]: player
-		})
-	}
+	const handleSubmit = (id, player) => id === 'playerOne' 
+		? setPlayerOne(player) 
+		: setPlayerTwo(player)
 
-	handleReset = id => {
-		this.setState({
-			[id]: null
-		})
-	}
+	const handleReset = (id) => id === 'playerOne'
+		? setPlayerOne(null)
+		: setPlayerTwo(null)	
+	
+	return (
+		<>
+			<Instructions />
 
-	render() {
-		const { playerOne, playerTwo } = this.state
+			<div className='players-container'>
+				<h1 className='center-text header-lg'>Players</h1>
+				<div className='row space-around'>
+					{playerOne === null
+						?	<PlayerInput
+								label='Player One'
+								onSubmit={(player) => handleSubmit('playerOne', player)}
+							/>
+						: 	<PlayerPreview
+								username={playerOne}
+								label='Player One'
+								onReset={() => handleReset('playerOne')}
+							/>
+					}
 
-		return (
-			<>
-				<Instructions />
-
-				<div className='players-container'>
-					<h1 className='center-text header-lg'>Players</h1>
-					<div className='row space-around'>
-						{playerOne === null
-							?	<PlayerInput
-									label='Player One'
-									onSubmit={(player) => this.handleSubmit('playerOne', player)}
-								/>
-							: 	<PlayerPreview
-									username={playerOne}
-									label='Player One'
-									onReset={() => this.handleReset('playerOne')}
-								/>
-						}
-
-						{playerTwo === null
-							?	<PlayerInput
-									label='Player Two'
-									onSubmit={(player) => this.handleSubmit('playerTwo', player)}
-								/>
-							:	<PlayerPreview
-									username={playerTwo}
-									label='Player Two'
-									onReset={() => this.handleReset('playerTwo')}
-								/>
-						}
-					</div>
-
-					{playerOne && playerTwo && (
-						<Link
-							className='btn btn-dark btn-space'
-							to={{
-								pathname: '/battle/results',
-								search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
-							}}
-						>
-							Battle
-						</Link>
-					)}
+					{playerTwo === null
+						?	<PlayerInput
+								label='Player Two'
+								onSubmit={(player) => handleSubmit('playerTwo', player)}
+							/>
+						:	<PlayerPreview
+								username={playerTwo}
+								label='Player Two'
+								onReset={() => handleReset('playerTwo')}
+							/>
+					}
 				</div>
-			</>
-		)
-	}
+
+				{playerOne && playerTwo && (
+					<Link
+						className='btn btn-dark btn-space'
+						to={{
+							pathname: '/battle/results',
+							search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
+						}}
+					>
+						Battle
+					</Link>
+				)}
+			</div>
+		</>
+	)
 }

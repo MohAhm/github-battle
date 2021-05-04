@@ -1,38 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaTimesCircle } from 'react-icons/fa'
-import { ThemeConsumer } from '../contexts/theme'
+import ThemeContext from '../contexts/theme'
 
 export default function PlayerPreview({ username, onReset, label }) {
+	const theme = React.useContext(ThemeContext)
+
 	return (
-		<ThemeConsumer>
-			{(theme) => (
-				<div className='column player'>
-					<h3 className='player-label'>{label}</h3>
-					<div className={`row bg-${theme}`}>
-						<div className='player-info'>
-							<img
-								className='avatar-small'
-								src={`https://github.com/${username}.png?size=200`}
-								alt={`Avatar for ${username}`}
-							/>
-							<a
-								className='link'
-								href={`https://github.com/${username}`}
-							>
-								{username}
-							</a>
-						</div>
-						<button
-							className='btn-clear flex-center'
-							onClick={onReset}
-						>
-							<FaTimesCircle color='rgb(194, 57, 42)' size={26} />
-						</button>
-					</div>
+		<div className='column player'>
+			<h3 className='player-label'>{label}</h3>
+			<div className={`row bg-${theme}`}>
+				<div className='player-info'>
+					<img
+						className='avatar-small'
+						src={`https://github.com/${username}.png?size=200`}
+						alt={`Avatar for ${username}`}
+					/>
+					<a
+						className='link'
+						href={`https://github.com/${username}`}
+					>
+						{username}
+					</a>
 				</div>
-			)}
-		</ThemeConsumer>
+				<button
+					className='btn-clear flex-center'
+					onClick={onReset}
+				>
+					<FaTimesCircle color='rgb(194, 57, 42)' size={26} />
+				</button>
+			</div>
+		</div>
 	)
 }
 
