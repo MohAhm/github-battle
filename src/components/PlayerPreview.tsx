@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { FaTimesCircle } from 'react-icons/fa'
 import ThemeContext from '../contexts/theme'
 
-export default function PlayerPreview({ username, onReset, label }) {
+export default function PlayerPreview({ username, onReset, label }: {username: string, label: string, onReset: () => void}) {
 	const theme = React.useContext(ThemeContext)
 
 	return (

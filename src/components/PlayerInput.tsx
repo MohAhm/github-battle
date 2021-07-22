@@ -1,18 +1,18 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, FormEvent, ChangeEvent } from 'react'
 import PropTypes from 'prop-types'
 import ThemeContext from '../contexts/theme'
 
-export default function PlayerInput({ onSubmit, label }) {
+export default function PlayerInput({ onSubmit, label }: {onSubmit: (username: string) => void, label: string}) {
 	const [username, setUsername] = useState('')
 	const theme = useContext(ThemeContext)
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault()
 
 		onSubmit(username)
 	}
 
-	const handleChange = (e) => setUsername(e.target.value)
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)
 
 	return (
 		<form className='column player' onSubmit={handleSubmit}>

@@ -5,14 +5,14 @@ import PlayerPreview from './PlayerPreview'
 import { Link } from 'react-router-dom'
 
 export default function Battle() {
-	const [playerOne, setPlayerOne] = useState(null)
-	const [playerTwo, setPlayerTwo] = useState(null)
+	const [playerOne, setPlayerOne] = useState<string | null>(null)
+	const [playerTwo, setPlayerTwo] = useState<string | null>(null)
 
-	const handleSubmit = (id, player) => id === 'playerOne' 
+	const handleSubmit = (id: string, player: string) => id === 'playerOne' 
 		? setPlayerOne(player) 
 		: setPlayerTwo(player)
 
-	const handleReset = (id) => id === 'playerOne'
+	const handleReset = (id: string) => id === 'playerOne'
 		? setPlayerOne(null)
 		: setPlayerTwo(null)	
 	
