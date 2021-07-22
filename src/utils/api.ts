@@ -12,9 +12,14 @@ function getErrorMsg(message: string, username: string) {
 
 export interface User {
 	id: string
+	name: string
 	login: string
+	following: number
 	followers: number
 	avatar_url: string
+	location?: string
+	company?: string
+	html_url: string
 }
 
 function getProfile(username: string): Promise<User> {

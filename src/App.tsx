@@ -4,9 +4,9 @@ import { ThemeProvider } from './contexts/theme'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Loading from './components/Loading'
 
-const Popular = React.lazy(() => import('./components/Popular.js'))
-const Battle = React.lazy(() => import('./components/Battle.js'))
-const Results = React.lazy(() => import('./components/Results.js'))
+const Popular = React.lazy(() => import('./components/Popular'))
+const Battle = React.lazy(() => import('./components/Battle'))
+const Results = React.lazy(() => import('./components/Results'))
 
 
 export const App = () => {

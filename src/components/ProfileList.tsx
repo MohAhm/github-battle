@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FaBriefcase, FaCompass, FaUser, FaUserFriends, FaUsers } from 'react-icons/fa'
 import Tooltip from './Tooltip'
+import { User } from '../utils/api'
 
-export default function ProfileList({ profile }) {
+export default function ProfileList({ profile }: {profile: User}) {
 	return (
 		<div>
 			<ul className='card-list'>
