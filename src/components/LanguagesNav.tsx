@@ -1,8 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function LanguagesNav({ selected, onUpdateLanguage }) {
-	const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python']
+export type Languages = 'All' | 'JavaScript' | 'Ruby' | 'Java' | 'CSS' | 'Python'
+
+export default function LanguagesNav({ selected, onUpdateLanguage }: {
+	selected: Languages
+	onUpdateLanguage: (lang: Languages) => void
+}) {
+	const languages: Languages[] = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python']
 
 	return (
 		<ul className='flex-center'>
@@ -12,7 +17,7 @@ export default function LanguagesNav({ selected, onUpdateLanguage }) {
 						className='btn-clear nav-link'
 						style={language === selected ? {
 							color: 'rgb(187, 46, 31)'
-						} : null}
+						} : undefined}
 						onClick={() => onUpdateLanguage(language)}
 					>
 						{language}

@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { FaUser, FaStar, FaCodeBranch, FaExclamationTriangle } from "react-icons/fa"
 import Card from './Card'
 import Tooltip from './Tooltip'
+import { Repo } from '../utils/api'
 
-export default function ReposGrid({ repos }) {
+export default function ReposGrid({ repos }: {repos: Repo[]}) {
 	return (
 		<ul className='grid space-around'>
 			{repos.map((repo, index) => {
